@@ -1,0 +1,121 @@
+if (station == "ninth_street") {
+
+      const demoData = {
+        "upcomingTrains": [
+          {
+            "lineName": "33rd Street",
+            "headsign": "33rd Street",
+            "route": "JSQ_33_HOB",
+            "routeDisplayName": "Journal Square - 33rd Street (via Hoboken)",
+            "direction": "TO_NY",
+            "lineColors": [
+              "#FF9900"
+            ],
+            "status": "ON_TIME",
+            "projectedArrival": "2024-12-11T13:43:18Z",
+            "lastUpdated": "2024-12-11T13:40:41Z"
+          },
+          {
+            "lineName": "Journal Square",
+            "headsign": "Journal Square",
+            "route": "JSQ_33_HOB",
+            "routeDisplayName": "33rd Street (via Hoboken) - Journal Square",
+            "direction": "TO_NJ",
+            "lineColors": [
+              "#FF9900"
+            ],
+            "status": "ON_TIME",
+            "projectedArrival": "2024-12-11T13:41:15Z",
+            "lastUpdated": "2024-12-11T13:40:41Z"
+          },
+          {
+            "lineName": "Hoboken",
+            "headsign": "Hoboken",
+            "route": "HOB_33",
+            "routeDisplayName": "33rd Street - Hoboken",
+            "direction": "TO_NJ",
+            "lineColors": [
+              "#4D92FB"
+            ],
+            "status": "ON_TIME",
+            "projectedArrival": "2024-12-11T13:42:40Z",
+            "lastUpdated": "2024-12-11T13:40:41Z"
+          }
+        ]
+      }
+
+      const startTime = new Date(); 
+      let increment = 0; 
+
+      demoData.upcomingTrains.forEach(train => {
+        increment += 367; 
+        const updatedTime = new Date(startTime.getTime() + increment * 1000); 
+        train.projectedArrival = updatedTime.toISOString();
+      });
+
+      try {
+        setPathData(demoData.upcomingTrains);
+      }
+      catch (error) {
+        console.error('Error fetching PATH data:', error);
+        setPathData([]);
+      }
+      finally {
+        setLoading(false);
+        return;
+      }
+    }
+
+    else if (station == "grove_street")  {
+      const groveData = {
+        "upcomingTrains": [
+         {
+          "lineName": "Journal Square",
+          "headsign": "Journal Square",
+          "route": "JSQ_33_HOB",
+          "routeDisplayName": "33rd Street (via Hoboken) - Journal Square",
+          "direction": "TO_NJ",
+          "lineColors": [
+           "#FF9900"
+          ],
+          "status": "ON_TIME",
+          "projectedArrival": "2024-12-11T14:13:05Z",
+          "lastUpdated": "2024-12-11T14:12:32Z"
+         },
+         {
+          "lineName": "Newark",
+          "headsign": "Newark",
+          "route": "NWK_WTC",
+          "routeDisplayName": "World Trade Center - Newark",
+          "direction": "TO_NJ",
+          "lineColors": [
+           "#D93A30"
+          ],
+          "status": "ON_TIME",
+          "projectedArrival": "2024-12-11T14:16:06Z",
+          "lastUpdated": "2024-12-11T14:12:32Z"
+         }
+        ]
+       }
+
+       const startTime = new Date(); 
+      let increment = 0; 
+
+      groveData.upcomingTrains.forEach(train => {
+        increment += 242; 
+        const updatedTime = new Date(startTime.getTime() + increment * 1000); 
+        train.projectedArrival = updatedTime.toISOString();
+      });
+
+      try {
+        setPathData(groveData.upcomingTrains);
+      }
+      catch (error) {
+        console.error('Error fetching PATH data:', error);
+        setPathData([]);
+      }
+      finally {
+        setLoading(false);
+        return;
+      }
+    }
